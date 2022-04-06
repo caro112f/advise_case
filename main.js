@@ -15,10 +15,10 @@ function calculateUrl() {
   const form = document.querySelector("form");
   let url = form.elements.url.value;
   console.log(url);
-  //let result =
+  let result = urlCalculater.concat(url);
   //urlCalculater +
   //`https://kea-alt-del.dk/websitecarbon/site/?url=https://${url}`;
   //console.log(result);
 
-  //console.log(result);
+  console.log(result);
 }

@@ -1,0 +1,21 @@
+{
+  "url": "https://www.twitch.tv/",
+  "green": "unknown",
+  "bytes": 4958496,
+  "cleanerThan": 0.14,
+  "statistics": {
+    "adjustedBytes": 3743664.48,
+    "energy": 0.006293239431828261,
+    "co2": {
+      "grid": {
+        "grams": 2.9892887301184237,
+        "litres": 1.6626423916918673
+      },
+      "renewable": {
+        "grams": 2.7091560011824116,
+        "litres": 1.5068325678576575
+      }
+    }
+  },
+  "timestamp": 1649239213
+}

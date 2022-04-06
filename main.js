@@ -21,7 +21,6 @@ function getUrl(event) {
 
 function prepareData(inputUrl) {
   const carbonApi = "https://kea-alt-del.dk/websitecarbon/site/?url=";
-
   let fullUrl = carbonApi.concat(inputUrl);
   //console.log(fullUrl);
   loadJSON(fullUrl);

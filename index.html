@@ -12,8 +12,15 @@
       <div class="form_wrapper">
         <form action="">
           <label for="url"><h2>Insert URL here:</h2></label>
-          <input type="text" name="url" id="url" />
-
+          <input
+            type="url"
+            name="url"
+            id="url"
+            placeholder="https://example.com"
+            pattern="https://.*"
+            size="30"
+            required
+          />
           <button type="submit">Analyse</button>
         </form>
       </div>

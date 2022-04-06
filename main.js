@@ -38,7 +38,19 @@ function cleanData(jsonOject) {
   cleaner = jsonOject.cleanerThan;
   console.log(greenHost, cleaner);
   //checkUrlData();
+
+  calculateHost();
 }
+
+function calculateHost() {
+  if (greenHost === "unknown") {
+    console.log("This is bad or unknown host");
+  } else {
+    console.log("This is a green host");
+  }
+}
+
+//funktion der linker barometer med cleanerthan
 
 //function checkUrlData() {}
 

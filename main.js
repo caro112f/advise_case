@@ -1,15 +1,8 @@
 import "./sass/style.scss";
 
-//const urlCalculater = "https://kea-alt-del.dk/websitecarbon/site/?url=";
-//const form = document.querySelector("form");
-
-//const ttvData = ttv.json;
 const form = document.querySelector("form");
-
-const Dataobj = {
-  green: "",
-  cleanerThan: "",
-};
+let greenHost;
+let cleaner;
 
 window.addEventListener("DOMContentLoaded", start);
 
@@ -30,43 +23,29 @@ function prepareData(inputUrl) {
   const carbonApi = "https://kea-alt-del.dk/websitecarbon/site/?url=";
 
   let fullUrl = carbonApi.concat(inputUrl);
-  console.log(fullUrl);
+  //console.log(fullUrl);
   loadJSON(fullUrl);
 }
 
 async function loadJSON(fullUrl) {
   const response = await fetch(fullUrl);
   const jsonData = await response.json();
-  console.log(jsonData);
+  //console.log(jsonData);
+  cleanData(jsonData);
 }
 
-// GET API
-/* 
-function calculateUrl(url) {
-  console.log(url);
+function cleanData(jsonOject) {
+  greenHost = jsonOject.green;
+  cleaner = jsonOject.cleanerThan;
+  console.log(greenHost, cleaner);
 
-  const carbonApi = "https://kea-alt-del.dk/websitecarbon/site/?url=";
-
-  const response = await fetch(carbonApi + url);
-  const data = await response.json();
-  
+  checkUrlData();
 }
 
+function checkUrlData() {}
 
-
-
-
-
-
- function calculateUrl() {
-  const form = document.querySelector("form");
-  //let inputUrl = form.elements.url.value;
-  console.log(url);
-  let result = urlCalculater.concat("https://www.twitch.tv/");
-  //urlCalculater +
-  //`https://kea-alt-del.dk/websitecarbon/site/?url=https://${url}`;
-  //console.log(result);
-
-  console.log(result);
-} 
- */
+/* function cleanData(jsonData) {
+  allData = jsonData.map(createData);
+  console.log(allData);
+    dataProperties.cleaner = jsonOject.cleanerThan;
+} */

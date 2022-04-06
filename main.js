@@ -7,7 +7,7 @@ let cleaner;
 window.addEventListener("DOMContentLoaded", start);
 
 function start() {
-  console.log("Hej Calculater");
+  console.log("Hej URL");
 
   form.addEventListener("submit", getUrl);
 }
@@ -38,11 +38,10 @@ function cleanData(jsonOject) {
   greenHost = jsonOject.green;
   cleaner = jsonOject.cleanerThan;
   console.log(greenHost, cleaner);
-
-  checkUrlData();
+  //checkUrlData();
 }
 
-function checkUrlData() {}
+//function checkUrlData() {}
 
 /* function cleanData(jsonData) {
   allData = jsonData.map(createData);

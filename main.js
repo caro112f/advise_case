@@ -21,16 +21,21 @@ function getUrl(event) {
 
 function prepareData(inputUrl) {
   const carbonApi = "https://kea-alt-del.dk/websitecarbon/site/?url=";
-  let fullUrl = carbonApi.concat(inputUrl);
+  let fullCarbonUrl = carbonApi.concat(inputUrl);
   //console.log(fullUrl);
-  loadJSON(fullUrl);
+
+  //let fullPagespeedUrl = pageSpeedApi.concat(inputUrl);
+  loadJSON(fullCarbonUrl);
 }
 
-async function loadJSON(fullUrl) {
-  const response = await fetch(fullUrl);
-  const jsonData = await response.json();
+async function loadJSON(fullCarbonUrl) {
+  const cResponse = await fetch(fullCarbonUrl);
+  const jsonCarbonData = await cResponse.json();
   //console.log(jsonData);
-  cleanData(jsonData);
+  const speedResponse = await fetch();
+  const jsonSpeedData = await speedResponse.json();
+ 
+  cleanData(jsonCarbonData);
 }
 
 function cleanData(jsonOject) {

@@ -46,6 +46,7 @@ header {
   width: 100vw;
   margin-inline: auto;
   text-align: center;
+  padding: 2rem;
   .form_wrapper {
     display: grid;
     place-content: center;
@@ -57,6 +58,7 @@ header {
     text-align: center;
     place-content: center;
     justify-items: center;
+    gap: 2rem;
     @include for-desktop() {
       gap: 3rem;
     }
@@ -74,6 +76,7 @@ header {
     text-align: center;
   }
 }
+
 main {
   display: grid;
   grid-template-columns: auto minmax(0, 1000px) auto;
@@ -87,12 +90,16 @@ main {
   h2 {
     text-align: center;
   }
+  margin-top: 2rem;
+  gap: 2rem;
+  margin-bottom: 2rem;
   @include for-desktop() {
     gap: 3rem;
     margin-bottom: 3rem;
   }
   .info_wrapper {
     display: grid;
+    gap: 1rem;
     @include for-desktop() {
       grid-template-columns: repeat(3, 1fr);
       grid-template-rows: repeat(3, 1fr);
@@ -100,7 +107,25 @@ main {
     }
   }
   .barometer {
+    display: grid;
     border: 2px solid rgb(1, 1, 92);
+    background: rgb(232, 31, 13);
+    background: linear-gradient(
+      90deg,
+      rgba(232, 31, 13, 1) 0%,
+      rgba(224, 214, 22, 1) 50%,
+      rgba(43, 195, 39, 1) 100%
+    );
+    max-height: 4rem;
+    border-radius: 5px;
+    align-items: end;
+    .arrow {
+      display: grid;
+      place-content: center;
+      @include for-desktop() {
+        font-size: xx-large;
+      }
+    }
     @include for-desktop() {
       grid-column: 1 / span 3;
       grid-row: 1;
@@ -109,6 +134,8 @@ main {
   .webhost_info {
     border: 2px solid rgb(1, 1, 92);
     display: grid;
+    gap: 1rem;
+    padding: 1rem;
     @include for-desktop() {
       grid-column: 1 / span 2;
       grid-row: 2/4;
@@ -117,12 +144,15 @@ main {
     }
     .change_host {
       display: grid;
+      gap: 1rem;
       @include for-desktop() {
         gap: 2rem;
       }
     }
     .host_boxes_wrapper {
       display: flex;
+      justify-content: center;
+      gap: 1rem;
       @include for-desktop() {
         gap: 2rem;
       }
@@ -135,6 +165,9 @@ main {
   .plantman_state {
     border: 2px solid rgb(1, 1, 92);
     display: grid;
+    width: 10rem;
+    height: 10rem;
+    margin-inline: auto;
     @include for-desktop() {
       grid-column: 3/4;
       grid-row: 2/3;
@@ -156,8 +189,10 @@ main {
     text-align: center;
   }
   display: grid;
+  grid-column: 2/3;
+  gap: 2rem;
+  margin-bottom: 2rem;
   @include for-desktop() {
-    grid-column: 2/3;
     grid-row: 2;
     gap: 3rem;
     margin-bottom: 3rem;
@@ -165,6 +200,8 @@ main {
   .tech_info_wrapper {
     display: grid;
     border: 2px solid rgb(1, 1, 92);
+    padding: 1rem;
+    gap: 1rem;
     @include for-desktop() {
       padding: 2rem;
       gap: 2rem;
@@ -175,8 +212,12 @@ main {
     width: 15rem;
     height: 15rem;
     border: 2px solid rgb(1, 1, 92);
+    margin-inline: auto;
   }
   .top {
+    display: grid;
+    gap: 1rem;
+    margin: 1rem;
     @include for-desktop() {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -188,6 +229,8 @@ main {
     }
   }
   .bottom {
+    display: grid;
+    gap: 1rem;
     @include for-desktop() {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -196,7 +239,7 @@ main {
       .tech_img {
         grid-column: 3;
       }
-      p {
+      .tech_text {
         grid-row: 1;
       }
     }
@@ -204,6 +247,7 @@ main {
 }
 footer {
   border-top: 2px solid rgb(1, 1, 92);
+  padding: 1rem;
   @include for-desktop() {
     padding: 2rem;
   }

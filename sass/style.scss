@@ -1,4 +1,7 @@
+//google font via import
 @import url("https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&family=Roboto&display=swap");
+
+// mixins til responsive
 @mixin for-phone {
   @media (max-width: 599px) {
     @content;
@@ -14,7 +17,7 @@
     @content;
   }
 }
-
+//font sizes taget fra type scale calculator
 @mixin h1size($n) {
   font-size: $n * 5.653rem;
 }
@@ -34,6 +37,14 @@
   font-size: $n * 1rem;
 }
 
+// farve variabler
+$blue: #17386e;
+$white: white;
+$beige: #e8dfd6;
+$hotpink: #ff69b4;
+$green: #298637;
+
+//reset
 * {
   top: 0;
   left: 0;
@@ -41,6 +52,7 @@
   margin: 0;
   padding: 0;
 }
+
 html {
   accent-color: hotpink;
 }
@@ -54,6 +66,15 @@ h5 {
 }
 p {
   font-family: "Roboto", sans-serif;
+  @include for-phone() {
+    @include psize(1);
+  }
+  @include for-tablet-portrait() {
+    @include psize(1);
+  }
+  @include for-desktop() {
+    @include psize(1);
+  }
 }
 h1 {
   @include for-phone() {
@@ -66,19 +87,62 @@ h1 {
     @include h1size(0.9);
   }
 }
-
+h2 {
+  @include for-phone() {
+    @include h2size(0.5);
+  }
+  @include for-tablet-portrait() {
+    @include h2size(0.7);
+  }
+  @include for-desktop() {
+    @include h2size(0.9);
+  }
+}
+h3 {
+  @include for-phone() {
+    @include h3size(0.5);
+  }
+  @include for-tablet-portrait() {
+    @include h3size(0.7);
+  }
+  @include for-desktop() {
+    @include h3size(0.9);
+  }
+}
+h4 {
+  @include for-phone() {
+    @include h4size(0.5);
+  }
+  @include for-tablet-portrait() {
+    @include h4size(0.7);
+  }
+  @include for-desktop() {
+    @include h4size(0.9);
+  }
+}
+h5 {
+  @include for-phone() {
+    @include h5size(0.5);
+  }
+  @include for-tablet-portrait() {
+    @include h5size(0.7);
+  }
+  @include for-desktop() {
+    @include h5size(0.9);
+  }
+}
+//------------ content ------------
 body {
-  background-color: rgb(236, 235, 235);
-  color: rgb(1, 1, 92);
+  background-color: $white;
+  color: $blue;
   display: grid;
-
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-    Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+  //font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+  // Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
 }
 button {
   border: none;
-  background-color: rgb(1, 1, 92);
-  color: white;
+  background-color: $blue;
+  color: $white;
   padding: 8px;
   border-radius: 5px;
 }
@@ -86,6 +150,7 @@ button {
 header {
   display: grid;
   place-content: center;
+  background-color: $beige;
   min-height: 50vw;
   width: 100vw;
   margin-inline: auto;
@@ -95,6 +160,14 @@ header {
     display: grid;
     place-content: center;
     text-align: center;
+  }
+  .white_box {
+    background-color: $white;
+    border-radius: 5px;
+    padding: 2rem;
+    @include for-desktop() {
+      padding: 3rem;
+    }
   }
   form {
     display: grid;
@@ -112,6 +185,7 @@ header {
     border: none;
     padding: 8px;
     border-radius: 5px;
+    background-color: $beige;
   }
   button {
     max-width: 10rem;
@@ -131,9 +205,6 @@ main {
   display: grid;
   grid-column: 2/3;
   grid-row: 1;
-  h2 {
-    text-align: center;
-  }
   margin-top: 2rem;
   gap: 2rem;
   margin-bottom: 2rem;
@@ -141,24 +212,30 @@ main {
     gap: 3rem;
     margin-bottom: 3rem;
   }
+  h2 {
+    text-align: center;
+  }
+  hr {
+    color: $hotpink;
+    margin-inline: auto;
+    width: 50%;
+  }
   .info_wrapper {
     display: grid;
     gap: 1rem;
     @include for-desktop() {
       grid-template-columns: repeat(3, 1fr);
-      grid-template-rows: repeat(3, 1fr);
-      gap: 2rem;
+      grid-template-rows: repeat(4, 1fr);
     }
   }
   .barometer {
     display: grid;
-    border: 2px solid rgb(1, 1, 92);
     background: rgb(232, 31, 13);
     background: linear-gradient(
       90deg,
-      rgba(232, 31, 13, 1) 0%,
+      $hotpink 0%,
       rgba(224, 214, 22, 1) 50%,
-      rgba(43, 195, 39, 1) 100%
+      $green 100%
     );
     max-height: 4rem;
     border-radius: 5px;
@@ -176,18 +253,19 @@ main {
     }
   }
   .webhost_info {
-    border: 2px solid rgb(1, 1, 92);
     display: grid;
     gap: 1rem;
-    padding: 1rem;
+
     @include for-desktop() {
       grid-column: 1 / span 2;
-      grid-row: 2/4;
+      grid-row: 3/5;
       gap: 2rem;
-      padding: 2rem;
     }
     .change_host {
       display: grid;
+      background-color: $beige;
+      border-radius: 5px;
+      padding: 1rem;
       gap: 1rem;
       @include for-desktop() {
         gap: 2rem;
@@ -202,19 +280,19 @@ main {
       }
     }
     .webhost_box {
-      border: 2px solid rgb(1, 1, 92);
+      border: 2px solid $blue;
       padding: 1rem;
     }
   }
   .plantman_state {
-    border: 2px solid rgb(1, 1, 92);
+    border: 2px solid $blue;
     display: grid;
     width: 10rem;
     height: 10rem;
     margin-inline: auto;
     @include for-desktop() {
       grid-column: 3/4;
-      grid-row: 2/3;
+      grid-row: 3/4;
     }
   }
   .try_another_button {
@@ -223,29 +301,39 @@ main {
     justify-items: center;
     @include for-desktop() {
       grid-column: 3/4;
-      grid-row: 3/4;
+      grid-row: 4/5;
     }
   }
 }
 
 #technical_facts {
-  h2 {
-    text-align: center;
-  }
   display: grid;
   grid-column: 2/3;
   gap: 2rem;
   margin-bottom: 2rem;
+
   @include for-desktop() {
     grid-row: 2;
     gap: 3rem;
     margin-bottom: 3rem;
+    margin-top: 3rem;
+  }
+  h2 {
+    text-align: center;
+  }
+  hr {
+    color: $hotpink;
+    margin-inline: auto;
+    width: 80%;
   }
   .tech_info_wrapper {
     display: grid;
-    border: 2px solid rgb(1, 1, 92);
+    border: 2px solid $blue;
     padding: 1rem;
     gap: 1rem;
+    background-color: $blue;
+    border-radius: 5px;
+    color: $white;
     @include for-desktop() {
       padding: 2rem;
       gap: 2rem;
@@ -255,7 +343,7 @@ main {
     display: block;
     width: 15rem;
     height: 15rem;
-    border: 2px solid rgb(1, 1, 92);
+    border: 2px solid $white;
     @include for-phone() {
       margin-inline: auto;
     }
@@ -293,7 +381,7 @@ main {
   }
 }
 footer {
-  border-top: 2px solid rgb(1, 1, 92);
+  border-top: 2px solid $blue;
   padding: 1rem;
   @include for-desktop() {
     padding: 2rem;

@@ -9,34 +9,42 @@
   <body>
     <header>
       <h1>Let Mr. Plant check your site</h1>
-      <div class="plantman">
-        <img src="" alt="" />
-      </div>
-      <div class="form_wrapper">
-        <form action="">
-          <label for="url"><h2>Insert URL here:</h2></label>
-          <input
-            type="url"
-            name="url"
-            id="url"
-            placeholder="https://example.com"
-            pattern="https://.*"
-            size="30"
-            required
-          />
-          <button type="submit">Analyse</button>
-        </form>
+      <div class="white_box">
+        <div class="plantman">
+          <img src="" alt="" />
+        </div>
+        <div class="form_wrapper">
+          <form action="">
+            <label for="url"><h2>Insert URL here:</h2></label>
+            <input
+              type="url"
+              name="url"
+              id="url"
+              placeholder="https://example.com"
+              pattern="https://.*"
+              size="30"
+              required
+            />
+            <button type="submit"><p>Analyze</p></button>
+          </form>
+        </div>
       </div>
     </header>
     <main>
       <section id="results">
-        <h2>Your results</h2>
+        <div class="results_h2">
+          <h2>Your results</h2>
+          <hr />
+        </div>
+
         <div class="info_wrapper">
           <div class="barometer">
             <div class="arrow">▲</div>
           </div>
-          <div class="webhost_info">
+          <div class="result_h3">
             <h3>What can you do?</h3>
+          </div>
+          <div class="webhost_info">
             <div class="change_host">
               <h4>Change your webhost</h4>
               <p>
@@ -57,12 +65,16 @@
           </div>
           <div class="plantman_state">plantman</div>
           <div class="try_another_button">
-            <button>Try another site</button>
+            <button><p>Try another site</p></button>
           </div>
         </div>
       </section>
       <section id="technical_facts">
-        <h2>Technical facts about the site</h2>
+        <div class="tech_h2">
+          <h2>Technical facts about the site</h2>
+          <hr />
+        </div>
+
         <div class="tech_info_wrapper">
           <div class="top">
             <div class="tech_img">

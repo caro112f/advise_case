@@ -7,8 +7,11 @@
     <title>Url analyser</title>
   </head>
   <body>
-    <main>
+    <header>
       <h1>Analyse the carbon footprint of your website</h1>
+      <div class="plantman">
+        <img src="" alt="" />
+      </div>
       <div class="form_wrapper">
         <form action="">
           <label for="url"><h2>Insert URL here:</h2></label>
@@ -24,7 +27,69 @@
           <button type="submit">Analyse</button>
         </form>
       </div>
+    </header>
+    <main>
+      <section id="results">
+        <h2>Your results</h2>
+        <div class="info_wrapper">
+          <div class="barometer"></div>
+          <div class="webhost_info">
+            <h3>What can you do?</h3>
+            <div class="change_host">
+              <h4>Change your webhost</h4>
+              <p>
+                Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+                Adipisci aspernatur molestias, delectus ullam nemo nulla
+                accusamus quos? Distinctio nam quaerat, molestiae fugiat ipsa
+                repellendus perspiciatis placeat exercitationem, quas, ut ullam.
+              </p>
+              <div class="host_boxes_wrapper">
+                <div id="webhost_1" class="webhost_box">
+                  <h5>Black Host</h5>
+                </div>
+                <div id="webhost_2" class="webhost_box">
+                  <h5>Green host</h5>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="plantman_state"></div>
+          <div class="try_another_button">
+            <button>Try another site</button>
+          </div>
+        </div>
+      </section>
+      <section id="technical_facts">
+        <h2>Technical facts about the site</h2>
+        <div class="tech_info_wrapper">
+          <div class="top">
+            <div class="tech_img">
+              <img src="" alt="img" />
+            </div>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit.
+              Blanditiis, provident facere! In ex animi non, cumque
+              exercitationem, provident sed beatae vero quo ad voluptates aut.
+              Nihil eius neque rem praesentium?
+            </p>
+          </div>
+          <div class="bottom">
+            <div class="tech_img">
+              <img src="" alt="img" />
+            </div>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae
+              fuga dolor ea eum. Earum adipisci delectus officiis aspernatur,
+              natus sint doloremque iure laudantium cupiditate soluta eius
+              tempora minima provident sapiente!
+            </p>
+          </div>
+        </div>
+      </section>
     </main>
+    <footer>
+      <h3>Powered by PlantMan</h3>
+    </footer>
     <div id="app"></div>
     <script type="module" src="/main.js"></script>
   </body>

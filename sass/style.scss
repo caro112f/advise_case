@@ -263,6 +263,7 @@ main {
 
       @include for-desktop() {
         height: 15vh;
+        margin-inline: 0;
       }
     }
   }
@@ -292,7 +293,7 @@ main {
     gap: 1rem;
     @include for-desktop() {
       grid-template-columns: repeat(3, 1fr);
-      grid-template-rows: 0.5fr 0.5fr 1fr 1fr;
+      grid-template-rows: 0.5fr 0.3fr 1fr 1fr;
     }
   }
   .barometer {
@@ -342,6 +343,10 @@ main {
       h4 {
         align-self: end;
       }
+
+      p {
+        margin-right: 5rem;
+      }
     }
     .host_boxes_wrapper {
       display: flex;
@@ -352,8 +357,13 @@ main {
       }
     }
     .webhost_box {
-      border: 2px solid $blue;
+      /*  border: 2px solid $blue; */
       padding: 1rem;
+
+      h5 {
+        text-align: center;
+        margin-block-end: 0.5rem;
+      }
     }
   }
   .plantman_state {
@@ -364,6 +374,7 @@ main {
     @include for-desktop() {
       grid-column: 3/4;
       grid-row: 3/4;
+      height: 15rem;
     }
   }
   .try_another_button {
@@ -373,6 +384,9 @@ main {
     @include for-desktop() {
       grid-column: 3/4;
       grid-row: 4/5;
+
+      align-self: start;
+      margin-block-start: 2rem;
     }
   }
 }

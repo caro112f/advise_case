@@ -165,10 +165,57 @@ header {
     background-color: $white;
     border-radius: 5px;
     padding: 2rem;
+    grid-row: 2/8;
+    grid-column: 1;
+    padding-block-start: 5rem;
+
+    @include for-tablet-portrait() {
+      grid-row: 3/8;
+    }
+
     @include for-desktop() {
       padding: 3rem;
     }
   }
+
+  .img_box_wrapper {
+    display: grid;
+    grid-template-rows: repeat(6, 0.5fr);
+
+    @include for-tablet-portrait() {
+      display: grid;
+      grid-template-rows: repeat(8, 0.5fr);
+    }
+  }
+
+  .plantman {
+    grid-row: 1/5;
+    grid-column: 1;
+    z-index: 1;
+
+    @include for-tablet-portrait() {
+      grid-row: 1/4;
+    }
+
+    @include for-desktop() {
+      grid-row: 1/5;
+    }
+
+    img {
+      @include for-phone() {
+        width: 40vw;
+      }
+
+      @include for-tablet-portrait() {
+        width: 35vw;
+      }
+
+      @include for-desktop() {
+        width: 15vw;
+      }
+    }
+  }
+
   form {
     display: grid;
     max-width: 800px;
@@ -201,6 +248,23 @@ main {
   grid-template-rows: auto;
   place-content: center;
 }
+
+.info_symbol_wrapper {
+  display: flex;
+  justify-content: space-between;
+
+  .symbol {
+    img {
+      height: 9vh;
+      margin-inline: 1rem;
+
+      @include for-desktop() {
+        height: 15vh;
+      }
+    }
+  }
+}
+
 #results {
   display: grid;
   grid-column: 2/3;
@@ -225,7 +289,7 @@ main {
     gap: 1rem;
     @include for-desktop() {
       grid-template-columns: repeat(3, 1fr);
-      grid-template-rows: repeat(4, 1fr);
+      grid-template-rows: 0.5fr 0.5fr 1fr 1fr;
     }
   }
   .barometer {
@@ -265,10 +329,15 @@ main {
       display: grid;
       background-color: $beige;
       border-radius: 5px;
-      padding: 1rem;
+      padding-block: 1rem;
+      padding-inline: 2rem;
       gap: 1rem;
       @include for-desktop() {
         gap: 2rem;
+      }
+
+      h4 {
+        align-self: end;
       }
     }
     .host_boxes_wrapper {

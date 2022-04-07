@@ -9,24 +9,30 @@
   <body>
     <header>
       <h1>Let Mr. Plant check your site</h1>
-      <div class="white_box">
+
+      <div class="img_box_wrapper">
         <div class="plantman">
-          <img src="" alt="" />
+          <img src="images/grown_plantman.png" alt="a plant man smiling" />
         </div>
-        <div class="form_wrapper">
-          <form action="">
-            <label for="url"><h2>Insert URL here:</h2></label>
-            <input
-              type="url"
-              name="url"
-              id="url"
-              placeholder="https://example.com"
-              pattern="https://.*"
-              size="30"
-              required
-            />
-            <button type="submit"><p>Analyze</p></button>
-          </form>
+        <div class="white_box">
+          <!--   <div class="plantman">
+          <img src="images/grown_plantman.png" alt="a plant man smiling" />
+        </div> -->
+          <div class="form_wrapper">
+            <form action="">
+              <label for="url"><h2>Insert URL here:</h2></label>
+              <input
+                type="url"
+                name="url"
+                id="url"
+                placeholder="https://example.com"
+                pattern="https://.*"
+                size="30"
+                required
+              />
+              <button type="submit"><p>Analyze</p></button>
+            </form>
+          </div>
         </div>
       </div>
     </header>
@@ -35,6 +41,20 @@
         <div class="results_h2">
           <h2>Your results</h2>
           <hr />
+        </div>
+
+        <div class="info_symbol_wrapper">
+          <div class="symbol">
+            <img src="images/sad_plantman.png" alt="bad result" />
+          </div>
+
+          <div class="symbol">
+            <img src="images/neutral_plantman.png" alt="neutral result" />
+          </div>
+
+          <div class="symbol">
+            <img src="images/grown_plantman.png" alt="good result" />
+          </div>
         </div>
 
         <div class="info_wrapper">

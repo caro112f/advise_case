@@ -10,6 +10,13 @@ body {
   grid-template-columns: auto minmax(0, 1000px) auto;
   place-content: center;
 }
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI",
+               Roboto, Oxygen-Sans, Ubuntu, Cantarell,
+               "Helvetica Neue", sans-serif;
+}
+
 main {
   grid-column: 2/3;
   display: grid;

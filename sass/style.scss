@@ -143,7 +143,8 @@ button {
   border: none;
   background-color: $blue;
   color: $white;
-  padding: 8px;
+  padding-inline: 1.2rem;
+  padding-block: 0.8rem;
   border-radius: 5px;
 }
 
@@ -228,9 +229,11 @@ header {
     }
   }
   #url {
-    max-width: 50rem;
+    /*   max-width: 50rem; */
+    width: 100%;
     border: none;
-    padding: 8px;
+    padding-inline: 1.2rem;
+    padding-block: 0.8rem;
     border-radius: 5px;
     background-color: $beige;
   }
@@ -354,9 +357,8 @@ main {
     }
   }
   .plantman_state {
-    border: 2px solid $blue;
+    /*  border: 2px solid $blue; */
     display: grid;
-    width: 10rem;
     height: 10rem;
     margin-inline: auto;
     @include for-desktop() {
@@ -412,7 +414,7 @@ main {
     display: block;
     width: 15rem;
     height: 15rem;
-    border: 2px solid $white;
+    /* border: 2px solid $white; */
     @include for-phone() {
       margin-inline: auto;
     }
@@ -423,9 +425,13 @@ main {
     margin: 1rem;
     @include for-desktop() {
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: 0.5fr 1fr;
       grid-template-rows: 1fr;
       align-items: center;
+
+      .tech_text {
+        margin-right: 5rem;
+      }
       .tech_img {
         grid-column: 1;
       }
@@ -437,14 +443,17 @@ main {
     margin: 1rem;
     @include for-desktop() {
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: 1fr 0.5fr;
       grid-template-rows: 1fr;
       align-items: center;
+      justify-items: end;
+
       .tech_img {
-        grid-column: 3;
+        grid-column: 2;
       }
       .tech_text {
         grid-row: 1;
+        margin-left: 5rem;
       }
     }
   }
@@ -454,5 +463,14 @@ footer {
   padding: 1rem;
   @include for-desktop() {
     padding: 2rem;
+  }
+
+  .credit {
+    display: flex;
+  }
+
+  p {
+    margin-block-start: 0.5rem;
+    margin-inline-end: 0.5rem;
   }
 }

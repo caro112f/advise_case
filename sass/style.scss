@@ -212,7 +212,9 @@ main {
     width: 15rem;
     height: 15rem;
     border: 2px solid rgb(1, 1, 92);
-    margin-inline: auto;
+    @include for-phone() {
+      margin-inline: auto;
+    }
   }
   .top {
     display: grid;
@@ -231,6 +233,7 @@ main {
   .bottom {
     display: grid;
     gap: 1rem;
+    margin: 1rem;
     @include for-desktop() {
       display: grid;
       grid-template-columns: 1fr 1fr;

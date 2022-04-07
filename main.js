@@ -32,9 +32,9 @@ async function loadJSON(fullCarbonUrl) {
   const cResponse = await fetch(fullCarbonUrl);
   const jsonCarbonData = await cResponse.json();
   //console.log(jsonData);
-  const speedResponse = await fetch();
+  const speedResponse = await fetch("ttv_fullspeed.json");
   const jsonSpeedData = await speedResponse.json();
- 
+ console.log(jsonSpeedData)
   cleanData(jsonCarbonData);
 }
 

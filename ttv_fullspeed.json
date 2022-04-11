@@ -192,9 +192,7 @@
       "emulatedFormFactor": "desktop",
       "formFactor": "desktop",
       "locale": "en-US",
-      "onlyCategories": [
-        "performance"
-      ],
+      "onlyCategories": ["performance"],
       "channel": "lr"
     },
     "audits": {
@@ -2666,7 +2664,7 @@
         "description": "Image formats like WebP and AVIF often provide better compression than PNG or JPEG, which means faster downloads and less data consumption. [Learn more](https://web.dev/uses-webp-images/).",
         "score": 0.9,
         "scoreDisplayMode": "numeric",
-        "displayValue": "Potential savings of 239 KiB",
+        "displayValue": "Potential savings of 643 KiB",
         "details": {
           "type": "opportunity",
           "overallSavingsMs": 120,

@@ -1,25 +1,32 @@
-/* const Dataobj = {
-  grams_co2: "",
-  green: "",
-  cleanerThan: "",
-};
-
-async function loadJSON() {
-  const respBad = await fetch("ttv.json");
-  const badData = await respBad.json();
-
-  const respGood = await fetch("portfolio.json");
-  const goodData = await respGood.json();
-
-  prepareData(badData, goodData);
+export function getHostData(jsonOject) {
+  return jsonOject.green;
 }
 
-function prepareData(badData, goodData) {
-const badDataPro = Object.create(Dataobj)
-
-badDataPro.grams_co2 = badData.grams
-badDataPro.cleanerThan = badData.cleanerThan;
-badDataPro.green = badData.green;
-
+export function getCleanerData(jsonOject) {
+  return jsonOject.cleanerThan;
 }
- */
+
+/* function cleanCarbonData(jsonOject) {
+  let greenHost = jsonOject.green;
+  let cleaner = jsonOject.cleanerThan;
+  //console.log(greenHost, cleaner);
+  //checkUrlData();
+  //calculateHost();
+  return { greenHost, cleaner };
+} */
+
+export function cleanPsImgData(jsonOject) {
+  let imageData = jsonOject.lighthouseResult.audits["modern-image-formats"];
+  let imgSavedKibString = imageData.displayValue;
+  return cleanData(imgSavedKibString);
+}
+
+export function cleanPsJsData(jsonOject) {
+  let jsData = jsonOject.lighthouseResult.audits["unused-javascript"];
+  let jsSavedKibString = jsData.displayValue;
+  return cleanData(jsSavedKibString);
+}
+
+function cleanData(data) {
+  return parseInt(data.split(" ")[3].slice(0, -4));
+}

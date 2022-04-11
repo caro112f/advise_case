@@ -1,28 +1,30 @@
 import "./sass/style.scss";
+import {
+  getHostData,
+  getCleanerData,
+  cleanPsImgData,
+  cleanPsJsData,
+} from "./scripts/data.js";
 
 const form = document.querySelector("form");
+let barValue;
 
 window.addEventListener("DOMContentLoaded", start);
 
 function start() {
-  console.log("Hej URL");
-
+  console.log("Mr. Plant says Welcome");
   form.addEventListener("submit", getUrl);
 }
 
 function getUrl(event) {
   let inputUrl = form.url.value;
-  //console.log(inputUrl);
   event.preventDefault();
   prepareData(inputUrl);
 }
 
 function prepareData(inputUrl) {
   const carbonApi = "https://kea-alt-del.dk/websitecarbon/site/?url=";
-  let fullCarbonUrl = carbonApi.concat(inputUrl);
-  //console.log(fullUrl);
-  //let fullPagespeedUrl = pageSpeedApi.concat(inputUrl);
-  loadJSON(fullCarbonUrl);
+  loadJSON(carbonApi.concat(inputUrl));
 }
 //GET DATA
 async function loadJSON(fullCarbonUrl) {
@@ -40,71 +42,48 @@ function getData(jsonCarbonData, jsonSpeedData) {
   let carbonCleanerData = getCleanerData(jsonCarbonData);
   let imgSavedKib = cleanPsImgData(jsonSpeedData);
   let jsSavedKib = cleanPsJsData(jsonSpeedData);
-  console.log(carbonHostData, carbonCleanerData, imgSavedKib, jsSavedKib);
+  //console.log(carbonHostData, carbonCleanerData, imgSavedKib, jsSavedKib);
 
-  calculateHost();
-  calculateSaved();
+  calculateBarValue(carbonHostData, imgSavedKib, jsSavedKib);
 }
 
-function getHostData(jsonOject) {
-  return jsonOject.green;
+function calculateBarValue(carbonHost, imgKib, jsKib) {
+  let hostValue = calculateHost(carbonHost);
+  let imgValue = calculateImg(imgKib);
+  let jsValue = calculateJs(jsKib);
+
+  barValue = hostValue + imgValue + jsValue;
+  makeBarResult(barValue);
 }
 
-function getCleanerData(jsonOject) {
-  return jsonOject.cleanerThan;
-}
-
-/* function cleanCarbonData(jsonOject) {
-  let greenHost = jsonOject.green;
-  let cleaner = jsonOject.cleanerThan;
-  //console.log(greenHost, cleaner);
-  //checkUrlData();
-  //calculateHost();
-  return { greenHost, cleaner };
-} */
-
-function cleanPsImgData(jsonOject) {
-  let imageData = jsonOject.lighthouseResult.audits["modern-image-formats"];
-  let imgSavedKibString = imageData.displayValue;
-  return cleanData(imgSavedKibString);
-}
-
-function cleanPsJsData(jsonOject) {
-  let jsData = jsonOject.lighthouseResult.audits["unused-javascript"];
-  let jsSavedKibString = jsData.displayValue;
-  return cleanData(jsSavedKibString);
-}
-
-function cleanData(data) {
-  return parseInt(data.split(" ")[3].slice(0, -4));
-}
-
-function calculateHost() {
-  if (greenHost === "unknown") {
-    console.log("This is bad or unknown host");
+function calculateHost(carbonHost) {
+  if (carbonHost === "unknown") {
+    return 0;
   } else {
-    console.log("This is a green host");
+    return 0.5;
   }
 }
 
+function calculateImg(imgKib) {
+  return logisticCurve(1, 1, 1, imgKib);
+}
+
+function calculateJs(jsKib) {
+  return logisticCurve(1, 1, 1, jsKib);
+}
+
+function logisticCurve(a, b, c, x) {
+  return 0.25;
+}
+
+function makeBarResult() {
+  //find bar
+  const bar = document.querySelector(".barometer");
+}
+
+//give number to bar
 //get the amount of bytes as number
 //put through math function
 //add to total result
-
-function calculateResult() {
-  if (greenHost == true && imgOptimized == true) {
-    let score = 1;
-    return score;
-  } else if (
-    (greenHost == false && imgOptimized == true) ||
-    (greenHost == true && imgOptimized == false)
-  ) {
-    let score = 0.5;
-    return score;
-  } else {
-    let score = 0;
-    return score;
-  }
-}
 
 //funktion der linker barometer med cleanerthan

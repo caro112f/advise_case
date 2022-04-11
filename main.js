@@ -3,6 +3,7 @@ import "./sass/style.scss";
 const form = document.querySelector("form");
 let greenHost;
 let cleaner;
+let imgOptimized;
 
 window.addEventListener("DOMContentLoaded", start);
 
@@ -34,7 +35,7 @@ async function loadJSON(fullCarbonUrl) {
   //console.log(jsonData);
   const speedResponse = await fetch("ttv_fullspeed.json");
   const jsonSpeedData = await speedResponse.json();
- console.log(jsonSpeedData)
+  //console.log(jsonSpeedData)
   cleanData(jsonCarbonData);
 }
 
@@ -43,7 +44,6 @@ function cleanData(jsonOject) {
   cleaner = jsonOject.cleanerThan;
   console.log(greenHost, cleaner);
   //checkUrlData();
-
   calculateHost();
 }
 
@@ -52,6 +52,22 @@ function calculateHost() {
     console.log("This is bad or unknown host");
   } else {
     console.log("This is a green host");
+  }
+}
+
+function calculateResult() {
+  if (greenHost == true && imgOptimized == true) {
+    let score = 1;
+    return score;
+  } else if (
+    (greenHost == false && imgOptimized == true) ||
+    (greenHost == true && imgOptimized == false)
+  ) {
+    let score = 0.5;
+    return score;
+  } else {
+    let score = 0;
+    return score;
   }
 }
 

@@ -38,66 +38,50 @@
     </header>
     <main>
       <section id="results">
-        <div class="results_h2">
-          <h2>Your results</h2>
-          <hr />
+        <h2>Your results: <span class="hidden" id="result_per"></span></h2>
+        <div class="barometer_wrapper">
+          <div class="barometer"></div>
         </div>
+      </section>
 
-        <div class="info_symbol_wrapper">
-          <div class="symbol">
-            <img src="images/sad_plantman.png" alt="bad result" />
-          </div>
-
-          <div class="symbol">
-            <img src="images/neutral_plantman.png" alt="neutral result" />
-          </div>
-
-          <div class="symbol">
-            <img src="images/grown_plantman.png" alt="good result" />
-          </div>
+      <div class="info_wrapper">
+        <div class="result_h3">
+          <h3>What can you do?</h3>
         </div>
+        <div class="webhost_info">
+          <div class="change_host">
+            <h4>Change your webhost</h4>
+            <p>
+              Lorem ipsum dolor sit amet consectetur, adipisicing elit. Adipisci
+              aspernatur molestias, delectus ullam nemo nulla accusamus quos?
+              Distinctio nam quaerat, molestiae fugiat ipsa repellendus
+              perspiciatis placeat exercitationem, quas, ut ullam.
+            </p>
+            <div class="host_boxes_wrapper">
+              <div id="webhost_1" class="webhost_box">
+                <h5>Black Host</h5>
+                <img src="images/blackhost2.png" alt="black host" />
+              </div>
 
-        <div class="info_wrapper">
-          <div class="barometer">
-            <div class="arrow">▲</div>
-          </div>
-          <div class="result_h3">
-            <h3>What can you do?</h3>
-          </div>
-          <div class="webhost_info">
-            <div class="change_host">
-              <h4>Change your webhost</h4>
-              <p>
-                Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-                Adipisci aspernatur molestias, delectus ullam nemo nulla
-                accusamus quos? Distinctio nam quaerat, molestiae fugiat ipsa
-                repellendus perspiciatis placeat exercitationem, quas, ut ullam.
-              </p>
-              <div class="host_boxes_wrapper">
-                <div id="webhost_1" class="webhost_box">
-                  <h5>Black Host</h5>
-                  <img src="images/blackhost2.png" alt="black host" />
-                </div>
-
-                <div id="webhost_2" class="webhost_box">
-                  <h5>Green host</h5>
-                  <img src="images/green_host.png" alt="black host" />
-                </div>
+              <div id="webhost_2" class="webhost_box">
+                <h5>Green host</h5>
+                <img src="images/green_host.png" alt="black host" />
               </div>
             </div>
           </div>
-
-          <img
-            class="plantman_state"
-            src="images/grown_plantman.png"
-            alt="mister plant"
-          />
-
-          <div class="try_another_button">
-            <button><p>Try another site</p></button>
-          </div>
         </div>
-      </section>
+
+        <img
+          class="plantman_state"
+          src="images/grown_plantman.png"
+          alt="mister plant"
+        />
+
+        <div class="try_another_button">
+          <button><p>Try another site</p></button>
+        </div>
+      </div>
+
       <section id="technical_facts">
         <div class="tech_h2">
           <h2>Technical facts about the site</h2>

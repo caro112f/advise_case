@@ -245,11 +245,36 @@ header {
   }
 }
 
-main {
-  display: grid;
-  grid-template-columns: auto minmax(0, 1000px) auto;
-  grid-template-rows: auto;
-  place-content: center;
+.barometer_wrapper {
+  box-sizing: content-box;
+  position: relative;
+  z-index: 2;
+  border: solid 1px black;
+  height: 3.5rem;
+  border-radius: 5px;
+  width: 50vw;
+}
+
+.barometer {
+  position: absolute;
+  top: 0;
+  z-index: 1;
+  width: 100%;
+  height: 3.5rem;
+  border-radius: 5px;
+  background: linear-gradient(
+    90deg,
+    $hotpink 0vw,
+    rgba(224, 214, 22, 1) 50%,
+    $green 100vw
+  );
+  transition: width 2s ease-in-out;
+  @include for-desktop() {
+  }
+}
+
+.hidden {
+  visibility: hidden;
 }
 
 .info_symbol_wrapper {
@@ -271,8 +296,9 @@ main {
 
 #results {
   display: grid;
-  grid-column: 2/3;
-  grid-row: 1;
+  align-items: center;
+  justify-content: center;
+  margin-inline: auto;
   margin-top: 2rem;
   gap: 2rem;
   margin-bottom: 2rem;
@@ -288,6 +314,7 @@ main {
     margin-inline: auto;
     width: 50%;
   }
+
   .info_wrapper {
     display: grid;
     gap: 1rem;
@@ -296,30 +323,7 @@ main {
       grid-template-rows: 0.5fr 0.3fr 1fr 1fr;
     }
   }
-  .barometer {
-    display: grid;
-    background: rgb(232, 31, 13);
-    background: linear-gradient(
-      90deg,
-      $hotpink 0%,
-      rgba(224, 214, 22, 1) 50%,
-      $green 100%
-    );
-    max-height: 4rem;
-    border-radius: 5px;
-    align-items: end;
-    .arrow {
-      display: grid;
-      place-content: center;
-      @include for-desktop() {
-        font-size: xx-large;
-      }
-    }
-    @include for-desktop() {
-      grid-column: 1 / span 3;
-      grid-row: 1;
-    }
-  }
+
   .webhost_info {
     display: grid;
     gap: 1rem;

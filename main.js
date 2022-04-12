@@ -53,6 +53,7 @@ function calculateBarValue(carbonHost, imgKib, jsKib) {
   let jsValue = calculateJs(jsKib);
 
   barValue = hostValue + imgValue + jsValue;
+  //console.log(barValue);
   makeBarResult(barValue);
 }
 
@@ -60,25 +61,33 @@ function calculateHost(carbonHost) {
   if (carbonHost === "unknown") {
     return 0;
   } else {
-    return 0.5;
+    return 0.5 * 100;
   }
 }
 
 function calculateImg(imgKib) {
-  return logisticCurve(1, 1, 1, imgKib);
+  return exponentialCurve(imgKib);
 }
 
 function calculateJs(jsKib) {
-  return logisticCurve(1, 1, 1, jsKib);
+  return exponentialCurve(jsKib);
 }
 
-function logisticCurve(a, b, c, x) {
-  return 0.25;
+function exponentialCurve(x) {
+  return 0.25 * Math.pow(Math.E, (Math.log(0.5) / 1000) * x);
 }
 
-function makeBarResult() {
-  //find bar
+function makeBarResult(barValue) {
+  let result = document.querySelector("#result_per");
+
+  barValue = Math.round(barValue * 10000) / 100;
+  result.textContent = barValue + "%";
   const bar = document.querySelector(".barometer");
+  bar.style.width = barValue + "%";
+
+  result.style.visibility = "visible";
+
+  console.log(bar.style.width);
 }
 
 //give number to bar

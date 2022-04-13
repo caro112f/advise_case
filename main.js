@@ -87,9 +87,12 @@ function stopLoad() {
     .addEventListener("click", reCalculateHost);
   document.querySelector("#img-btn").addEventListener("click", reCalculateImg);
   document.querySelector("#js-btn").addEventListener("click", reCalculateJs);
+
   setTimeout(function () {
     showBarResult(barValue);
   }, 2000);
+
+  setTimeout(showPlantMood, 2000);
 }
 
 function calculateHost(carbonHost) {
@@ -110,6 +113,21 @@ function calculateJs(jsKib) {
 
 function exponentialCurve(x) {
   return Math.pow(Math.E, (Math.log(0.5) / 200) * x);
+}
+
+function showPlantMood() {
+  const plant = document.querySelector(".plant-sprite");
+  if (barValue >= 0 && barValue < 0.2) {
+    plant.src = "/05.png";
+  } else if (barValue >= 0.2 && barValue < 0.4) {
+    plant.src = "/04.png";
+  } else if (barValue >= 0.4 && barValue < 0.6) {
+    plant.src = "/03.png";
+  } else if (barValue >= 0.6 && barValue < 0.8) {
+    plant.src = "/02.png";
+  } else {
+    plant.src = "/01.png";
+  }
 }
 
 function showBarResult(barValue) {

@@ -19,7 +19,7 @@
 }
 
 @mixin for-bigboi {
-  @media (min-width: 1500px) {
+  @media (min-width: 1300px) {
     @content;
   }
 }
@@ -288,9 +288,6 @@ header {
   }
 }
 
-.plant-sprite {
-}
-
 .barometer_wrapper {
   box-sizing: content-box;
   position: relative;
@@ -301,6 +298,12 @@ header {
   width: 80vw;
 
   @include for-desktop() {
+    width: 60vw;
+
+    margin-bottom: 5px;
+    grid-column: 1/3;
+  }
+  @include for-bigboi() {
     width: 60vw;
     justify-self: center;
     margin-bottom: 5px;
@@ -348,12 +351,15 @@ header {
 
   @include for-desktop() {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 2fr 1fr;
     align-items: center;
     gap: 0;
+    margin-inline: 8rem 2rem;
   }
 
   @include for-bigboi() {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
     margin-inline: 24rem;
   }
 
@@ -364,24 +370,28 @@ header {
       margin-top: 0;
       grid-column: 2/3;
       grid-row: 1/2;
+      justify-self: left;
     }
 
     @include for-bigboi() {
       display: flex;
-      justify-content: end;
+      justify-self: end;
       margin-inline: 0;
     }
     img {
       @include for-phone() {
         width: 40vw;
+        height: 32vw;
       }
 
       @include for-tablet-portrait() {
         width: 35vw;
+        height: 30vw;
       }
 
       @include for-desktop() {
         width: 15vw;
+        height: 13vw;
       }
     }
   }

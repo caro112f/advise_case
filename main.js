@@ -115,10 +115,14 @@ function exponentialCurve(x) {
   return Math.pow(Math.E, (Math.log(0.5) / 200) * x);
 }
 
+//make animation with timeline
+//
+
 function showPlantMood() {
   const plant = document.querySelector(".plant-sprite");
   if (barValue >= 0 && barValue < 0.2) {
     plant.src = "/05.png";
+    //move frame to whatever matches
   } else if (barValue >= 0.2 && barValue < 0.4) {
     plant.src = "/04.png";
   } else if (barValue >= 0.4 && barValue < 0.6) {
@@ -148,6 +152,7 @@ function reCalculateHost() {
   hostBtn.removeEventListener("click", reCalculateHost);
   hostBtn.classList.add("deactivated");
   hostBtn.classList.remove("card-btn");
+  showPlantMood();
   showBarResult(barValue);
 }
 
@@ -159,6 +164,7 @@ function reCalculateImg() {
   imgBtn.removeEventListener("click", reCalculateImg);
   imgBtn.classList.add("deactivated");
   imgBtn.classList.remove("card-btn");
+  showPlantMood();
   showBarResult(barValue);
 }
 
@@ -170,5 +176,6 @@ function reCalculateJs() {
   jsBtn.removeEventListener("click", reCalculateJs);
   jsBtn.classList.add("deactivated");
   jsBtn.classList.remove("card-btn");
+  showPlantMood();
   showBarResult(barValue);
 }

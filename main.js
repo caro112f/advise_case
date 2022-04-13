@@ -116,11 +116,13 @@ function exponentialCurve(x) {
 }
 
 //make animation with timeline
-//
+//if src = ""
 
 function showPlantMood() {
   const plant = document.querySelector(".plant-sprite");
   if (barValue >= 0 && barValue < 0.2) {
+    plant.src = "/04.png";
+    setTimeout(2000);
     plant.src = "/05.png";
     //move frame to whatever matches
   } else if (barValue >= 0.2 && barValue < 0.4) {

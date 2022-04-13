@@ -8,6 +8,10 @@ import {
 
 const form = document.querySelector("form");
 let barValue;
+let imgValue;
+let jsValue;
+let hostValue;
+let imgSavedPer;
 
 window.addEventListener("DOMContentLoaded", start);
 
@@ -51,15 +55,16 @@ function getData(jsonCarbonData, jsonSpeedData) {
   let carbonCleanerData = getCleanerData(jsonCarbonData);
   let imgSavedKib = cleanPsImgData(jsonSpeedData);
   let jsSavedKib = cleanPsJsData(jsonSpeedData);
+  imgSavedPer = 0.5 * (imgSavedKib / (imgSavedKib + jsSavedKib));
   //console.log(carbonHostData, carbonCleanerData, imgSavedKib, jsSavedKib);
 
   calculateBarValue(carbonHostData, imgSavedKib, jsSavedKib);
 }
 
 function calculateBarValue(carbonHost, imgKib, jsKib) {
-  let hostValue = calculateHost(carbonHost);
-  let imgValue = calculateImg(imgKib);
-  let jsValue = calculateJs(jsKib);
+  hostValue = calculateHost(carbonHost);
+  imgValue = calculateImg(imgKib);
+  jsValue = calculateJs(jsKib);
 
   barValue = hostValue + imgValue + jsValue;
   //console.log(barValue);
@@ -71,22 +76,21 @@ function calculateBarValue(carbonHost, imgKib, jsKib) {
 function stopLoad() {
   const loader = document.querySelector(".loader");
   //loader.style.position = "sticky";
-
   window.location.href = "#results";
-
   loader.classList.add("right");
-
-  console.log("remove ani");
+  document.querySelector("#results").style.display = "block";
 
   //setTimeout(makeBarResult(barValue), 2000);
   // makeBarResult(barValue);
-
+  document
+    .querySelector("#greenhost-btn")
+    .addEventListener("click", reCalculateHost);
+  document.querySelector("#img-btn").addEventListener("click", reCalculateImg);
+  document.querySelector("#js-btn").addEventListener("click", reCalculateJs);
   setTimeout(function () {
-    makeBarResult(barValue);
+    showBarResult(barValue);
   }, 2000);
 }
-
-function showResults() {}
 
 function calculateHost(carbonHost) {
   if (carbonHost === "unknown") {
@@ -97,18 +101,18 @@ function calculateHost(carbonHost) {
 }
 
 function calculateImg(imgKib) {
-  return exponentialCurve(imgKib);
+  return exponentialCurve(imgKib) * imgSavedPer;
 }
 
 function calculateJs(jsKib) {
-  return exponentialCurve(jsKib);
+  return exponentialCurve(jsKib) * (0.5 - imgSavedPer);
 }
 
 function exponentialCurve(x) {
-  return 0.25 * Math.pow(Math.E, (Math.log(0.5) / 1000) * x);
+  return Math.pow(Math.E, (Math.log(0.5) / 200) * x);
 }
 
-function makeBarResult(barValue) {
+function showBarResult(barValue) {
   let result = document.querySelector("#result_per");
 
   barValue = Math.round(barValue * 10000) / 100;
@@ -117,13 +121,36 @@ function makeBarResult(barValue) {
   bar.style.width = barValue + "%";
   result.classList.remove("hide");
   //result.style.visibility = "visible";
-
-  console.log(bar.style.width);
 }
 
-//give number to bar
-//get the amount of bytes as number
-//put through math function
-//add to total result
+function reCalculateHost() {
+  hostValue = 0.5;
+  barValue = hostValue + imgValue + jsValue;
+  let hostBtn = document.querySelector("#greenhost-btn");
+  hostBtn.removeEventListener("click", reCalculateHost);
+  hostBtn.classList.add("deactivated");
+  hostBtn.classList.remove("card-btn");
+  showBarResult(barValue);
+}
 
-//funktion der linker barometer med cleanerthan
+function reCalculateImg() {
+  imgValue = imgSavedPer;
+  barValue = hostValue + imgValue + jsValue;
+  let imgBtn = document.querySelector("#img-btn");
+
+  imgBtn.removeEventListener("click", reCalculateImg);
+  imgBtn.classList.add("deactivated");
+  imgBtn.classList.remove("card-btn");
+  showBarResult(barValue);
+}
+
+function reCalculateJs() {
+  jsValue = 0.5 - imgSavedPer;
+  barValue = hostValue + imgValue + jsValue;
+
+  let jsBtn = document.querySelector("#js-btn");
+  jsBtn.removeEventListener("click", reCalculateJs);
+  jsBtn.classList.add("deactivated");
+  jsBtn.classList.remove("card-btn");
+  showBarResult(barValue);
+}

@@ -158,11 +158,6 @@ button {
   padding-block: 0.8rem;
   border-radius: 5px;
   font-size: 1rem;
-
-  &:hover {
-    cursor: pointer;
-    background-color: $hotpink;
-  }
 }
 
 .loader {
@@ -285,6 +280,11 @@ header {
     display: flex;
     justify-content: center;
     text-align: center;
+
+    &:hover {
+      cursor: pointer;
+      background-color: $hotpink;
+    }
   }
 }
 
@@ -322,8 +322,8 @@ header {
 }
 
 #result_per {
-  -webkit-transition: all 2s linear 0s;
-  transition: all 0.3s linear 0s;
+  -webkit-transition: all 2s ease-in-out 0s;
+  transition: all 0.3s ease-in-out 0s;
 }
 
 .hide {
@@ -332,6 +332,10 @@ header {
 
 .hidden {
   visibility: hidden;
+}
+
+.hiddenhide {
+  display: none;
 }
 
 #result-section {
@@ -453,6 +457,17 @@ header {
     margin-left: 2px;
     margin-bottom: -0.5rem;
   }
+}
+
+.card-btn {
+  &:hover {
+    cursor: pointer;
+    background-color: $hotpink;
+  }
+}
+
+.deactivated {
+  background-color: gray;
 }
 
 #technical_facts {

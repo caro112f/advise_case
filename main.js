@@ -19,7 +19,16 @@ function start() {
 function getUrl(event) {
   let inputUrl = form.url.value;
   event.preventDefault();
+  loadAni();
   prepareData(inputUrl);
+}
+
+function loadAni() {
+  const loader = document.querySelector(".loader");
+  //loader.style.transform = "translateX(0%)";
+  //loader.style.visibility = "visible";
+  loader.classList.remove("hidden");
+  loader.classList.remove("right");
 }
 
 function prepareData(inputUrl) {
@@ -54,8 +63,30 @@ function calculateBarValue(carbonHost, imgKib, jsKib) {
 
   barValue = hostValue + imgValue + jsValue;
   //console.log(barValue);
-  makeBarResult(barValue);
+
+  //showResults();
+  setTimeout(stopLoad, 2000);
 }
+
+function stopLoad() {
+  const loader = document.querySelector(".loader");
+  //loader.style.position = "sticky";
+
+  window.location.href = "#results";
+
+  loader.classList.add("right");
+
+  console.log("remove ani");
+
+  //setTimeout(makeBarResult(barValue), 2000);
+  // makeBarResult(barValue);
+
+  setTimeout(function () {
+    makeBarResult(barValue);
+  }, 2000);
+}
+
+function showResults() {}
 
 function calculateHost(carbonHost) {
   if (carbonHost === "unknown") {
@@ -84,8 +115,8 @@ function makeBarResult(barValue) {
   result.textContent = barValue + "%";
   const bar = document.querySelector(".barometer");
   bar.style.width = barValue + "%";
-
-  result.style.visibility = "visible";
+  result.classList.remove("hide");
+  //result.style.visibility = "visible";
 
   console.log(bar.style.width);
 }

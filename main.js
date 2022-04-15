@@ -1,9 +1,10 @@
 import "./sass/style.scss";
 import {
   getHostData,
-  getCleanerData,
+  getbytesData,
   cleanPsImgData,
   cleanPsJsData,
+  getCo2Data,
 } from "./scripts/data.js";
 
 const form = document.querySelector("form");
@@ -29,36 +30,41 @@ function getUrl(event) {
 
 function loadAni() {
   const loader = document.querySelector(".loader");
-  //loader.style.transform = "translateX(0%)";
-  //loader.style.visibility = "visible";
   loader.classList.remove("hidden");
   loader.classList.remove("right");
 }
 
 function prepareData(inputUrl) {
+  //combining url from form with our carbon
+  //no longer used in order to avoid errors during presentation
   const carbonApi = "https://kea-alt-del.dk/websitecarbon/site/?url=";
   loadJSON(carbonApi.concat(inputUrl));
 }
+
 //GET DATA
 async function loadJSON(fullCarbonUrl) {
-  const cResponse = await fetch(fullCarbonUrl);
+  //const cResponse = await fetch(fullCarbonUrl); //HOW WE GOT DATA FROM URL LIVE
+  //our actual live result
+  console.log(fullCarbonUrl);
+
+  const cResponse = await fetch("ttv.json");
   const jsonCarbonData = await cResponse.json();
-  //console.log(jsonData);
+
   const speedResponse = await fetch("ttv_fullspeed.json");
   const jsonSpeedData = await speedResponse.json();
-  //console.log(jsonSpeedData)
   getData(jsonCarbonData, jsonSpeedData);
 }
 
 function getData(jsonCarbonData, jsonSpeedData) {
   let carbonHostData = getHostData(jsonCarbonData);
-  let carbonCleanerData = getCleanerData(jsonCarbonData);
+  let carbonBytesData = getbytesData(jsonCarbonData);
+  let carbonCo2Data = getCo2Data(jsonCarbonData);
   let imgSavedKib = cleanPsImgData(jsonSpeedData);
   let jsSavedKib = cleanPsJsData(jsonSpeedData);
   imgSavedPer = 0.5 * (imgSavedKib / (imgSavedKib + jsSavedKib));
-  //console.log(carbonHostData, carbonCleanerData, imgSavedKib, jsSavedKib);
 
   calculateBarValue(carbonHostData, imgSavedKib, jsSavedKib);
+  calculateTech(carbonBytesData, carbonCo2Data);
 }
 
 function calculateBarValue(carbonHost, imgKib, jsKib) {
@@ -68,20 +74,23 @@ function calculateBarValue(carbonHost, imgKib, jsKib) {
 
   barValue = hostValue + imgValue + jsValue;
   //console.log(barValue);
-
-  //showResults();
   setTimeout(stopLoad, 2000);
+}
+
+function calculateTech(carbonBytesData, carbonCo2Data) {
+  const byteResult = document.querySelector("#bytes-to-load");
+  const co2Result = document.querySelector("#grams-of-co2");
+  byteResult.textContent = carbonBytesData + " kibibytes";
+  co2Result.textContent = carbonCo2Data + " grams";
 }
 
 function stopLoad() {
   const loader = document.querySelector(".loader");
-  //loader.style.position = "sticky";
   window.location.href = "#results";
   loader.classList.add("right");
   document.querySelector("#results").style.display = "block";
 
-  //setTimeout(makeBarResult(barValue), 2000);
-  // makeBarResult(barValue);
+  // adding eventlisteners to impact buttons
   document
     .querySelector("#greenhost-btn")
     .addEventListener("click", reCalculateHost);
@@ -115,16 +124,10 @@ function exponentialCurve(x) {
   return Math.pow(Math.E, (Math.log(0.5) / 200) * x);
 }
 
-//make animation with timeline
-//if src = ""
-
 function showPlantMood() {
   const plant = document.querySelector(".plant-sprite");
   if (barValue >= 0 && barValue < 0.2) {
-    plant.src = "/04.png";
-    setTimeout(2000);
     plant.src = "/05.png";
-    //move frame to whatever matches
   } else if (barValue >= 0.2 && barValue < 0.4) {
     plant.src = "/04.png";
   } else if (barValue >= 0.4 && barValue < 0.6) {

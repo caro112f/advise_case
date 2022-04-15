@@ -366,6 +366,7 @@ header {
   .plant-result {
     margin-top: 2rem;
     margin-inline: auto;
+
     @include for-desktop() {
       margin-top: 0;
       grid-column: 2/3;
@@ -378,6 +379,7 @@ header {
       justify-self: end;
       margin-inline: 0;
     }
+
     img {
       @include for-phone() {
         width: 40vw;
@@ -484,48 +486,83 @@ header {
 }
 
 #technical_facts {
-  display: grid;
-  grid-column: 2/3;
   gap: 2rem;
   margin-bottom: 2rem;
+  margin-top: 6rem;
+
+  .tech-result {
+    color: $hotpink;
+  }
 
   @include for-desktop() {
     grid-row: 2;
     gap: 3rem;
     margin-bottom: 3rem;
-    margin-top: 3rem;
+    margin-top: 8rem;
   }
-  h2 {
-    text-align: center;
+  @include for-bigboi() {
+    margin-inline: 24rem;
   }
-  hr {
-    color: $hotpink;
-    margin-inline: auto;
-    width: 80%;
-  }
-  .tech_info_wrapper {
+
+  .tech_h2 {
     display: grid;
-    border: 2px solid $blue;
+    justify-content: center;
+  }
+
+  .tech-expla {
+    margin-bottom: 2rem;
+    margin-left: 0.2rem;
+    font-weight: 600;
+  }
+
+  h4 {
+    font-family: "Roboto", sans-serif;
+    font-weight: 400;
+    font-size: 1.5rem;
+  }
+
+  .tech_info_wrapper {
+    border-radius: 1rem;
     padding: 1rem;
-    gap: 1rem;
     background-color: $blue;
-    border-radius: 5px;
     color: $white;
+
     @include for-desktop() {
       padding: 2rem;
       gap: 2rem;
     }
   }
+
   .tech_img {
     display: block;
-    width: 15rem;
-    height: 15rem;
+    width: 12rem;
+    height: 12rem;
+    margin-bottom: 1.5rem;
     /* border: 2px solid $white; */
     @include for-phone() {
       margin-inline: auto;
     }
   }
-  .top {
+
+  .tech-info {
+    margin-block: 4rem;
+    @include for-desktop() {
+      margin-block: 2rem;
+      display: flex;
+      align-items: center;
+      gap: 4rem;
+    }
+  }
+
+  .tech-info-center {
+    @include for-desktop() {
+      display: flex;
+      align-items: center;
+      flex-direction: row-reverse;
+      gap: 4rem;
+    }
+  }
+  /*   .top {
     display: grid;
     gap: 1rem;
     margin: 1rem;
@@ -564,8 +601,9 @@ header {
         margin-left: 5rem;
       }
     }
-  }
+  } */
 }
+
 footer {
   border-top: 2px solid $blue;
   padding: 1rem;

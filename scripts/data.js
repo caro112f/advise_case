@@ -2,8 +2,18 @@ export function getHostData(jsonOject) {
   return jsonOject.green;
 }
 
-export function getCleanerData(jsonOject) {
-  return jsonOject.cleanerThan;
+export function getbytesData(jsonOject) {
+  let bytesData = parseInt(jsonOject.bytes);
+  let kibiByes = bytesData / 1024;
+
+  let roundedData = Math.round(kibiByes);
+
+  console.log(roundedData);
+  return roundedData;
+}
+
+export function getCo2Data(jsonOject) {
+  return Math.round(jsonOject.statistics.co2.grid.grams);
 }
 
 /* function cleanCarbonData(jsonOject) {

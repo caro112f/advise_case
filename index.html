@@ -49,7 +49,7 @@
             <div class="barometer"></div>
           </div>
           <div class="plant-result">
-            <img class="plant-sprite" src="public/01.png" alt="plant" />
+            <img id="plant-1" class="plant-sprite" src="/01.png" alt="plant" />
           </div>
         </div>
 
@@ -90,46 +90,48 @@
           </div>
         </div>
       </section>
-      <!--       <section id="technical_facts">
+      <section id="technical_facts">
         <div class="tech_h2">
           <h2>Technical facts about the site</h2>
-          <hr />
+          <p class="tech-expla">
+            This section is not affected by the section above. This only
+            displays facts from your current site.
+          </p>
         </div>
 
         <div class="tech_info_wrapper">
-          <div class="top">
-            <img
-              class="tech_img"
-              src="images/green_energy_symbol.png"
-              alt="picture of a plug with a plant at the end"
-            />
-
-            <div class="tech_text">
-              <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Blanditiis, provident facere! In ex animi non, cumque
-                exercitationem, provident sed beatae vero quo ad voluptates aut.
-                Nihil eius neque rem praesentium?
-              </p>
-            </div>
-          </div>
-          <div class="bottom">
+          <div class="tech-info">
             <img
               class="tech_img"
               src="images/plant.png"
               alt="picture of a plug with a plant at the end"
             />
+
             <div class="tech_text">
-              <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae
-                fuga dolor ea eum. Earum adipisci delectus officiis aspernatur,
-                natus sint doloremque iure laudantium cupiditate soluta eius
-                tempora minima provident sapiente!
-              </p>
+              <h4>
+                This page takes
+                <span class="tech-result" id="bytes-to-load"></span> to load
+                which is ____ compared to others in your industry.
+              </h4>
+            </div>
+          </div>
+          <div class="tech-info-center">
+            <img
+              class="tech_img"
+              src="images/green_energy_symbol.png"
+              alt="picture of a plug with a plant at the end"
+            />
+            <div class="tech_text">
+              <h4>
+                This page produces
+                <span class="tech-result" id="grams-of-co2"></span> of CO2
+                everytime someone visits this page which is ____ compared to
+                others in your industry.
+              </h4>
             </div>
           </div>
         </div>
-      </section> -->
+      </section>
     </main>
     <footer>
       <div class="credit">

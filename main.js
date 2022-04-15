@@ -50,7 +50,7 @@ async function loadJSON(fullCarbonUrl) {
   //our actual live result
   console.log(fullCarbonUrl);
 
-  //const cResponse = await fetch("ttv.json");
+  const cResponse = await fetch("ttv.json");
   const jsonCarbonData = await cResponse.json();
   //console.log(jsonCarbonData);
   const speedResponse = await fetch("ttv_fullspeed.json");

@@ -9,14 +9,14 @@ import {
   getAvgCo2,
 } from "./scripts/data.js";
 
+window.addEventListener("DOMContentLoaded", start);
+
 const form = document.querySelector("form");
 let barValue;
 let imgValue;
 let jsValue;
 let hostValue;
 let imgSavedPer;
-
-window.addEventListener("DOMContentLoaded", start);
 
 function start() {
   console.log("Mr. Plant says Welcome");

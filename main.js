@@ -32,6 +32,7 @@ function loadAni() {
   const loader = document.querySelector(".loader");
   loader.classList.remove("hidden");
   loader.classList.remove("right");
+  form.removeEventListener("submit", getUrl);
 }
 
 function prepareData(inputUrl) {
@@ -88,7 +89,10 @@ function stopLoad() {
   const loader = document.querySelector(".loader");
   window.location.href = "#results";
   loader.classList.add("right");
-  document.querySelector("#results").style.display = "block";
+  form.url.value = "";
+  document.querySelector("header").classList.add("hiddenhide");
+  document.querySelector("#results").classList.remove("hiddenhide");
+  document.querySelector("#technical_facts").classList.remove("hiddenhide");
 
   // adding eventlisteners to impact buttons
   document
@@ -96,6 +100,7 @@ function stopLoad() {
     .addEventListener("click", reCalculateHost);
   document.querySelector("#img-btn").addEventListener("click", reCalculateImg);
   document.querySelector("#js-btn").addEventListener("click", reCalculateJs);
+  document.querySelector(".try-again-btn").addEventListener("click", reset);
 
   setTimeout(function () {
     showBarResult(barValue);
@@ -183,4 +188,31 @@ function reCalculateJs() {
   jsBtn.classList.remove("card-btn");
   showPlantMood();
   showBarResult(barValue);
+}
+
+function reset() {
+  document.querySelector(".try-again-btn").removeEventListener("click", reset);
+  barValue = "";
+  imgValue = "";
+  jsValue = "";
+  hostValue = "";
+  imgSavedPer = "";
+
+  document.querySelector("#greenhost-btn").classList.remove("deactivated");
+  document.querySelector("#greenhost-btn").classList.add("card-btn");
+
+  document.querySelector("#img-btn").classList.remove("deactivated");
+  document.querySelector("#img-btn").classList.add("card-btn");
+
+  document.querySelector("#js-btn").classList.remove("deactivated");
+  document.querySelector("#js-btn").classList.add("card-btn");
+
+  document.querySelector("header").classList.remove("hiddenhide");
+  document.querySelector("#results").classList.add("hiddenhide");
+  document.querySelector("#technical_facts").classList.add("hiddenhide");
+
+  document.querySelector(".plant-sprite").src = "/01.png";
+  document.querySelector(".barometer").style.width = "60vw";
+  document.querySelector("#result_per").classList.add("hide");
+  form.addEventListener("submit", getUrl);
 }

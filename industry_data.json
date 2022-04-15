@@ -1,0 +1,45 @@
+[
+  {
+    "url": "https://www.youtube.com/",
+    "green": true,
+    "bytes": 4068043,
+    "cleanerThan": 0.21,
+    "statistics": {
+      "adjustedBytes": 3071372.465,
+      "energy": 0.005163091513630934,
+      "co2": {
+        "grid": {
+          "grams": 2.4524684689746934,
+          "litres": 1.3640629624437246
+        },
+        "renewable": {
+          "grams": 2.2226423307628163,
+          "litres": 1.2362336643702785
+        }
+      }
+    },
+    "timestamp": 1650023337
+  },
+
+  {
+    "url": "https://vimeo.com/",
+    "green": "unknown",
+    "bytes": 4441986,
+    "cleanerThan": 0.16,
+    "statistics": {
+      "adjustedBytes": 3353699.43,
+      "energy": 0.005637693657679483,
+      "co2": {
+        "grid": {
+          "grams": 2.6779044873977544,
+          "litres": 1.489450475890631
+        },
+        "renewable": {
+          "grams": 2.4269522510592436,
+          "litres": 1.3498708420391514
+        }
+      }
+    },
+    "timestamp": 1650029963
+  }
+]

@@ -6,14 +6,14 @@ export function getbytesData(jsonOject) {
   let bytesData = parseInt(jsonOject.bytes);
   let kibiByes = bytesData / 1024;
 
-  let roundedData = Math.round(kibiByes);
+  let roundedData = Math.round(100 * kibiByes) / 100;
 
   console.log(roundedData);
   return roundedData;
 }
 
 export function getCo2Data(jsonOject) {
-  return Math.round(jsonOject.statistics.co2.grid.grams);
+  return Math.round(100 * jsonOject.statistics.co2.grid.grams) / 100;
 }
 
 /* function cleanCarbonData(jsonOject) {
@@ -39,4 +39,31 @@ export function cleanPsJsData(jsonOject) {
 
 function cleanData(data) {
   return parseInt(data.split(" ")[3].slice(0, -4));
+}
+
+export function getAvgByte(jsonOject) {
+  let byteList = [];
+  jsonOject.forEach((obj) => {
+    byteList.push(obj.bytes);
+  });
+
+  return Math.round((100 * calculateAvg(byteList)) / 1024) / 100;
+}
+
+export function getAvgCo2(jsonOject) {
+  let co2List = [];
+  jsonOject.forEach((obj) => {
+    co2List.push(obj.statistics.co2.grid.grams);
+  });
+
+  return Math.round(100 * calculateAvg(co2List)) / 100;
+}
+
+function calculateAvg(list) {
+  let total = 0;
+  list.forEach((obj) => {
+    total = total + obj;
+  });
+
+  return total / list.length;
 }

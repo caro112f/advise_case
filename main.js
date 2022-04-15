@@ -5,6 +5,8 @@ import {
   cleanPsImgData,
   cleanPsJsData,
   getCo2Data,
+  getAvgByte,
+  getAvgCo2,
 } from "./scripts/data.js";
 
 const form = document.querySelector("form");
@@ -44,28 +46,33 @@ function prepareData(inputUrl) {
 
 //GET DATA
 async function loadJSON(fullCarbonUrl) {
-  const cResponse = await fetch(fullCarbonUrl); //HOW WE GOT DATA FROM URL LIVE
+  //const cResponse = await fetch(fullCarbonUrl); //HOW WE GOT DATA FROM URL LIVE
   //our actual live result
   console.log(fullCarbonUrl);
 
-  //const cResponse = await fetch("ttv.json");
+  const cResponse = await fetch("ttv.json");
   const jsonCarbonData = await cResponse.json();
-
+  //console.log(jsonCarbonData);
   const speedResponse = await fetch("ttv_fullspeed.json");
   const jsonSpeedData = await speedResponse.json();
-  getData(jsonCarbonData, jsonSpeedData);
+
+  const industryResponse = await fetch("industry_data.json");
+  const jsonIndustryData = await industryResponse.json();
+  getData(jsonCarbonData, jsonSpeedData, jsonIndustryData);
 }
 
-function getData(jsonCarbonData, jsonSpeedData) {
+function getData(jsonCarbonData, jsonSpeedData, jsonIndustryData) {
   let carbonHostData = getHostData(jsonCarbonData);
   let carbonBytesData = getbytesData(jsonCarbonData);
   let carbonCo2Data = getCo2Data(jsonCarbonData);
   let imgSavedKib = cleanPsImgData(jsonSpeedData);
   let jsSavedKib = cleanPsJsData(jsonSpeedData);
   imgSavedPer = 0.5 * (imgSavedKib / (imgSavedKib + jsSavedKib));
-
+  let avgIndByte = getAvgByte(jsonIndustryData);
+  let avgCo2 = getAvgCo2(jsonIndustryData);
+  console.log(avgIndByte, avgCo2);
   calculateBarValue(carbonHostData, imgSavedKib, jsSavedKib);
-  calculateTech(carbonBytesData, carbonCo2Data);
+  calculateTech(carbonBytesData, carbonCo2Data, avgIndByte, avgCo2);
 }
 
 function calculateBarValue(carbonHost, imgKib, jsKib) {
@@ -78,11 +85,70 @@ function calculateBarValue(carbonHost, imgKib, jsKib) {
   setTimeout(stopLoad, 2000);
 }
 
-function calculateTech(carbonBytesData, carbonCo2Data) {
+function calculateTech(carbonBytesData, carbonCo2Data, avgIndByte, avgCo2) {
+  let avgIndByteResult = getByteRating(carbonBytesData, avgIndByte);
+  let avgIndCo2Result = getCo2Rating(carbonCo2Data, avgCo2);
+
+  displayTech(
+    carbonBytesData,
+    carbonCo2Data,
+    avgIndByteResult,
+    avgIndCo2Result
+  );
+}
+
+function getByteRating(carbonBytesData, avgIndByte) {
+  if (avgIndByte + 100 <= carbonBytesData) {
+    return "bad";
+  } else if (avgIndByte - 100 >= carbonBytesData) {
+    return "good";
+  } else {
+    return "okay";
+  }
+}
+
+function getCo2Rating(carbonCo2Data, avgCo2) {
+  if (avgCo2 + 0.2 <= carbonCo2Data) {
+    return "bad";
+  } else if (avgCo2 - 0.2 >= carbonCo2Data) {
+    return "good";
+  } else {
+    return "okay";
+  }
+}
+
+function displayTech(
+  carbonBytesData,
+  carbonCo2Data,
+  avgIndByteResult,
+  avgIndCo2Result
+) {
   const byteResult = document.querySelector("#bytes-to-load");
+  const byteRating = document.querySelector("#kib-average");
   const co2Result = document.querySelector("#grams-of-co2");
+  const co2Rating = document.querySelector("#co2-average");
+  //site result
   byteResult.textContent = carbonBytesData + " kibibytes";
+  byteResult.style.color = getColor(avgIndByteResult);
+  //rating result with style
+  byteRating.textContent = avgIndByteResult;
+  byteRating.style.color = getColor(avgIndByteResult);
+  //site result
   co2Result.textContent = carbonCo2Data + " grams";
+  co2Result.style.color = getColor(avgIndCo2Result);
+  //rating result
+  co2Rating.textContent = avgIndCo2Result;
+  co2Rating.style.color = getColor(avgIndCo2Result);
+}
+
+function getColor(rating) {
+  if (rating === "good") {
+    return "#1cba30"; //green
+  } else if (rating === "bad") {
+    return "#ff69b4"; //pink
+  } else {
+    return "#93A81D"; //yellow
+  }
 }
 
 function stopLoad() {
@@ -214,5 +280,10 @@ function reset() {
   document.querySelector(".plant-sprite").src = "/01.png";
   document.querySelector(".barometer").style.width = "60vw";
   document.querySelector("#result_per").classList.add("hide");
+
+  document.querySelector("#bytes-to-load").textContent = "";
+  document.querySelector("#kib-average").textContent = "";
+  document.querySelector("#grams-of-co2").textContent = "";
+  document.querySelector("#co2-average").textContent = "";
   form.addEventListener("submit", getUrl);
 }

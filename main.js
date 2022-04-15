@@ -46,11 +46,11 @@ function prepareData(inputUrl) {
 
 //GET DATA
 async function loadJSON(fullCarbonUrl) {
-  //const cResponse = await fetch(fullCarbonUrl); //HOW WE GOT DATA FROM URL LIVE
+  const cResponse = await fetch(fullCarbonUrl); //HOW WE GOT DATA FROM URL LIVE
   //our actual live result
-  console.log(fullCarbonUrl);
+  //console.log(fullCarbonUrl);
 
-  const cResponse = await fetch("ttv.json");
+  //const cResponse = await fetch("ttv.json");
   const jsonCarbonData = await cResponse.json();
   //console.log(jsonCarbonData);
   const speedResponse = await fetch("ttv_fullspeed.json");

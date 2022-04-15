@@ -198,15 +198,15 @@ function exponentialCurve(x) {
 function showPlantMood() {
   const plant = document.querySelector(".plant-sprite");
   if (barValue >= 0 && barValue < 0.2) {
-    plant.src = "/05.png";
+    plant.src = "05.png";
   } else if (barValue >= 0.2 && barValue < 0.4) {
-    plant.src = "/04.png";
+    plant.src = "04.png";
   } else if (barValue >= 0.4 && barValue < 0.6) {
-    plant.src = "/03.png";
+    plant.src = "03.png";
   } else if (barValue >= 0.6 && barValue < 0.8) {
-    plant.src = "/02.png";
+    plant.src = "02.png";
   } else {
-    plant.src = "/01.png";
+    plant.src = "01.png";
   }
 }
 
@@ -277,7 +277,7 @@ function reset() {
   document.querySelector("#results").classList.add("hiddenhide");
   document.querySelector("#technical_facts").classList.add("hiddenhide");
 
-  document.querySelector(".plant-sprite").src = "/01.png";
+  document.querySelector(".plant-sprite").src = "01.png";
   document.querySelector(".barometer").style.width = "60vw";
   document.querySelector("#result_per").classList.add("hide");
 

@@ -44,11 +44,11 @@ function prepareData(inputUrl) {
 
 //GET DATA
 async function loadJSON(fullCarbonUrl) {
-  //const cResponse = await fetch(fullCarbonUrl); //HOW WE GOT DATA FROM URL LIVE
+  const cResponse = await fetch(fullCarbonUrl); //HOW WE GOT DATA FROM URL LIVE
   //our actual live result
   console.log(fullCarbonUrl);
 
-  const cResponse = await fetch("ttv.json");
+  //const cResponse = await fetch("ttv.json");
   const jsonCarbonData = await cResponse.json();
 
   const speedResponse = await fetch("ttv_fullspeed.json");
@@ -113,7 +113,7 @@ function calculateHost(carbonHost) {
   if (carbonHost === "unknown") {
     return 0;
   } else {
-    return 0.5 * 100;
+    return 0.5;
   }
 }
 

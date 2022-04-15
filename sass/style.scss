@@ -64,10 +64,6 @@ html {
   accent-color: hotpink;
 }
 
-body {
-  overflow-x: hidden;
-}
-
 h1,
 h2,
 h3,
@@ -144,9 +140,10 @@ h5 {
 }
 //------------ content ------------
 body {
-  background-color: $white;
   color: $blue;
   display: grid;
+  overflow-x: hidden;
+  background-color: rgb(251, 254, 255);
   //font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
   // Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
 }
@@ -187,7 +184,7 @@ button {
 }
 
 header {
-  background-color: $white;
+  background-color: rgb(251, 254, 255);
   width: 100vw;
   margin-inline: auto;
   text-align: center;

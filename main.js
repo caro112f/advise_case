@@ -50,7 +50,7 @@ async function loadJSON(fullCarbonUrl) {
   //our actual live result
   console.log(fullCarbonUrl);
 
-  const cResponse = await fetch("ttv.json");
+  //const cResponse = await fetch("ttv.json");
   const jsonCarbonData = await cResponse.json();
   //console.log(jsonCarbonData);
   const speedResponse = await fetch("ttv_fullspeed.json");
@@ -143,11 +143,11 @@ function displayTech(
 
 function getColor(rating) {
   if (rating === "good") {
-    return "#1cba30"; //green
+    return "#42F25C"; //green
   } else if (rating === "bad") {
     return "#ff69b4"; //pink
   } else {
-    return "#93A81D"; //yellow
+    return "#ECCD8E"; //yellow
   }
 }
 

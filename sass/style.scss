@@ -429,7 +429,13 @@ header {
   flex-wrap: wrap;
   grid-gap: 1rem;
   margin-top: 1.5rem;
+
+  .card-hide {
+    display: none;
+  }
 }
+
+
 
 .card {
   position: relative;
@@ -443,6 +449,8 @@ header {
   box-shadow: -5px 12px 10px #634a3e;
   height: 360px;
   width: 280px;
+
+
 
   h4 {
     margin-top: -1rem;

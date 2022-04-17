@@ -70,9 +70,33 @@ function getData(jsonCarbonData, jsonSpeedData, jsonIndustryData) {
   imgSavedPer = 0.5 * (imgSavedKib / (imgSavedKib + jsSavedKib));
   let avgIndByte = getAvgByte(jsonIndustryData);
   let avgCo2 = getAvgCo2(jsonIndustryData);
-  console.log(avgIndByte, avgCo2);
+  //console.log(avgIndByte, avgCo2);
+
+calculater(carbonHostData, imgSavedKib, jsSavedKib, carbonBytesData, carbonCo2Data, avgIndByte, avgCo2)
+}
+
+function calculater(carbonHostData, imgSavedKib, jsSavedKib, carbonBytesData, carbonCo2Data, avgIndByte, avgCo2) {
   calculateBarValue(carbonHostData, imgSavedKib, jsSavedKib);
   calculateTech(carbonBytesData, carbonCo2Data, avgIndByte, avgCo2);
+  displayImprovements(carbonHostData, imgSavedKib, jsSavedKib);
+  setTimeout(stopLoad, 2000);
+}
+
+function displayImprovements(carbonHostData, imgSavedKib, jsSavedKib) {
+  console.log(carbonHostData)
+  if (carbonHostData == "unknown" ) {
+//document.querySelector("#greenhost-card").style.display = "none";
+document.querySelector("#greenhost-card").classList.remove("card-hide")
+  };
+  console.log(imgSavedKib)
+if (imgSavedKib >= 0) {
+  document.querySelector("#img-card").classList.remove("card-hide")
+};
+console.log(jsSavedKib)
+if (jsSavedKib >= 0) {
+  document.querySelector("#js-card").classList.remove("card-hide")
+};
+
 }
 
 function calculateBarValue(carbonHost, imgKib, jsKib) {
@@ -82,7 +106,7 @@ function calculateBarValue(carbonHost, imgKib, jsKib) {
 
   barValue = hostValue + imgValue + jsValue;
   //console.log(barValue);
-  setTimeout(stopLoad, 2000);
+
 }
 
 function calculateTech(carbonBytesData, carbonCo2Data, avgIndByte, avgCo2) {

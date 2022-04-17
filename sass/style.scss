@@ -351,13 +351,13 @@ header {
     grid-template-columns: 2fr 1fr;
     align-items: center;
     gap: 0;
-    margin-inline: 8rem 2rem;
+    margin-inline: 8rem;
   }
 
   @include for-bigboi() {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    margin-inline: 24rem;
+    margin-inline: 18rem;
   }
 
   .plant-result {
@@ -407,12 +407,13 @@ header {
 
 #action-section {
   margin-top: 4rem;
-  padding: 2rem;
+  padding-block: 2rem 4rem;
+  padding-inline: 2rem;
   background-color: $beige;
   border-radius: 1rem;
 
   @include for-bigboi() {
-    margin-inline: 24rem;
+    margin-inline: 18rem;
   }
   h3 {
     text-align: center;
@@ -426,8 +427,7 @@ header {
   display: flex;
   justify-content: space-evenly;
   flex-wrap: wrap;
-  grid-gap: 2rem;
-  margin-inline: 1rem;
+  grid-gap: 1rem;
   margin-top: 1.5rem;
 }
 
@@ -442,7 +442,7 @@ header {
   background-color: $white;
   box-shadow: -5px 12px 10px #634a3e;
   height: 360px;
-  width: 300px;
+  width: 280px;
 
   h4 {
     margin-top: -1rem;
@@ -513,7 +513,7 @@ header {
     margin-top: 8rem;
   }
   @include for-bigboi() {
-    margin-inline: 24rem;
+    margin-inline: 18rem;
   }
 
   .tech_h2 {

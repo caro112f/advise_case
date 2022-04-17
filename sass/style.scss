@@ -214,13 +214,12 @@ header {
   .plant-info {
     display: flex;
     flex-direction: column-reverse;
-    gap: 2rem;
+    gap: 1rem;
 
     @include for-desktop() {
       flex-direction: row;
       align-items: flex-end;
       justify-content: space-between;
-      gap: 14rem;
     }
   }
 
@@ -228,6 +227,17 @@ header {
     z-index: 2;
     position: relative;
     margin-bottom: -1rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+    justify-content: center;
+
+    p {
+      background-color: $white;
+      padding: 1rem;
+      border-radius: 2rem;
+    }
 
     img {
       @include for-phone() {
@@ -356,7 +366,7 @@ header {
 
   @include for-bigboi() {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 2fr 1fr;
     margin-inline: 18rem;
   }
 

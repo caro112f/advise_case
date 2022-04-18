@@ -322,6 +322,10 @@ function reset() {
   document.querySelector(".barometer").style.width = "60vw";
   document.querySelector("#result_per").classList.add("hide");
 
+  document.querySelector("#greenhost-card").classList.add("card-hide");
+  document.querySelector("#img-card").classList.add("card-hide");
+  document.querySelector("#js-card").classList.add("card-hide");
+
   document.querySelector("#bytes-to-load").textContent = "";
   document.querySelector("#kib-average").textContent = "";
   document.querySelector("#grams-of-co2").textContent = "";
